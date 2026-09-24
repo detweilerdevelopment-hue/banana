@@ -81,7 +81,10 @@ nav a,
   color: #fff;
   padding: 11px 15px;
   cursor: pointer;
+  border-radius: 999px;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
+.bag:hover{transform:translateY(-2px);box-shadow:0 8px 18px #15151324}
 .bag b {
   color: #d8b96a;
   margin-left: 6px;
@@ -91,7 +94,7 @@ nav a,
   z-index: 1;
   right: 22px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(20px, -50%);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -103,6 +106,19 @@ nav a,
   font-weight: 700;
   box-shadow: 0 8px 24px #15151324;
   cursor: pointer;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease, box-shadow .2s ease;
+}
+.floating-bag.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(0, -50%);
+}
+.floating-bag:hover {
+  transform: translate(-3px, -50%);
+  box-shadow: 0 12px 28px #15151338;
 }
 .floating-bag b {
   display: grid;
@@ -167,7 +183,11 @@ h2 em {
   padding: 14px 18px;
   font-weight: 700;
   cursor: pointer;
+  border-radius: 999px;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
 }
+.btn:hover{transform:translateY(-2px)}
+.btn:not(.dark):hover{background:var(--ink);color:#fff}
 .dark {
   background: var(--ink);
   color: #fff;
@@ -212,7 +232,10 @@ h2 em {
   display: grid;
   grid-template-columns: 30px 1fr;
   cursor: pointer;
+  border-radius: 12px;
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
+.method-list button:hover{transform:translateY(-2px);box-shadow:0 8px 18px #15151312}
 .method-list button.selected {
   border-color: var(--ink);
 }
@@ -270,6 +293,8 @@ h2 em {
   font-size: 11px;
   font-weight: 700;
   cursor: pointer;
+  border-radius: 999px;
+  transition: background .2s ease,color .2s ease;
 }
 .filters button.active {
   background: var(--ink);
@@ -332,7 +357,9 @@ h2 em {
   font-weight: 700;
   cursor: pointer;
   padding: 0;
+  transition: color .2s ease;
 }
+.product footer button:hover{color:#a87636}
 .allergy {
   color: var(--muted);
   display: block;
@@ -550,9 +577,11 @@ details p {
     right: 14px;
     top: auto;
     bottom: 16px;
-    transform: none;
+    transform: translateY(20px);
     z-index: 4;
   }
+  .floating-bag.visible {transform:translateY(0)}
+  .floating-bag:hover {transform:translateY(-3px)}
   header {
     height: 68px;
     padding: 0 18px;

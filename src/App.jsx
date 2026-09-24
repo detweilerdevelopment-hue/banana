@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const items = [
   [
     "original",
@@ -61,7 +61,14 @@ export default function App() {
     [method, setMethod] = useState("pickup"),
     [date, setDate] = useState(minimumDate()),
     [note, setNote] = useState(""),
-    [toast, setToast] = useState("");
+    [toast, setToast] = useState(""),
+    [hasScrolled, setHasScrolled] = useState(false);
+  useEffect(() => {
+    const updateScrollState = () => setHasScrolled(window.scrollY > 260);
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrollState);
+  }, []);
   const visible =
       filter === "all" ? items : items.filter((x) => x.category === filter),
     total = cart.reduce((s, x) => s + x.price * x.quantity, 0),
@@ -102,7 +109,7 @@ export default function App() {
           </button>
         </div>
       </header>
-      <button className="floating-bag" onClick={() => setDrawer(true)} aria-label={`Open bag with ${count} items`}>
+      <button className={hasScrolled ? "floating-bag visible" : "floating-bag"} onClick={() => setDrawer(true)} aria-label={`Open bag with ${count} items`}>
         <span>Bag</span><b>{count}</b>
       </button>
       <main id="top">
