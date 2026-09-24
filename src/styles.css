@@ -97,11 +97,12 @@ nav a,
   transform: translate(20px, -50%);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   border: 0;
   background: var(--ink);
   color: #fff;
-  padding: 13px 12px 13px 15px;
+  min-height: 48px;
+  padding: 7px 8px 7px 16px;
   font-size: 12px;
   font-weight: 700;
   box-shadow: 0 8px 24px #15151324;
@@ -123,12 +124,13 @@ nav a,
 .floating-bag b {
   display: grid;
   place-items: center;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 5px;
-  background: #d8b96a;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f0cb71;
   color: var(--ink);
   font-size: 11px;
+  font-variant-numeric: tabular-nums;
 }
 .hero {
   display: grid;
