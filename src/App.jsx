@@ -102,6 +102,9 @@ export default function App() {
           </button>
         </div>
       </header>
+      <button className="floating-bag" onClick={() => setDrawer(true)} aria-label={`Open bag with ${count} items`}>
+        <span>Bag</span><b>{count}</b>
+      </button>
       <main id="top">
         <section className="hero">
           <div>
